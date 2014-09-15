@@ -24,11 +24,7 @@ public class Console extends OutputStream {
 
         if (b == '\n') {
             final String text = sb.toString() + "\n";
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    terminalWindow.append(text);
-                }
-            });
+            SwingUtilities.invokeLater(() -> terminalWindow.append(text));
             sb.setLength(0);
             sb.append(prompt).append(" ");
             return;
